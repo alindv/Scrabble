@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scrabble-Style AI Board</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div>
+          <h1>Scrabble-Style AI</h1>
+          <p class="subtitle">Play a Scrabble-style game against an adaptive AI. Difficulty affects how strong the AI plays.</p>
+        </div>
+        <div class="controls">
+          <div class="control">
+            <label for="difficulty">AI Difficulty</label>
+            <select id="difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+              <option value="genius">Genius</option>
+            </select>
+          </div>
+          <div class="control">
+            <label for="seed">Dictionary</label>
+            <select id="seed">
+              <option value="full" selected>Full</option>
+              <option value="classic">Classic (Small)</option>
+            </select>
+          </div>
+          <div class="control zoom-control">
+            <label for="zoom">Board Zoom</label>
+            <div class="zoom-row">
+              <input type="range" id="zoom" min="0.6" max="1.8" step="0.05" value="1" />
+              <button id="zoomReset">Reset</button>
+            </div>
+          </div>
+          <div class="control">
+            <label>Game</label>
+            <button id="newGame">New Game</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="board-area">
+        <div class="board-viewport" id="boardViewport" aria-label="Scrabble board">
+          <div class="board-inner" id="boardInner">
+            <div id="board" class="board"></div>
+          </div>
+        </div>
+        <aside class="side">
+          <div class="score">
+            <h2>Score</h2>
+            <div class="score-row"><span>You</span><strong id="scorePlayer">0</strong></div>
+            <div class="score-row"><span>AI</span><strong id="scoreAI">0</strong></div>
+          </div>
+
+          <div class="turn">
+            <h2>Turn</h2>
+            <p id="turnStatus">Your move</p>
+            <div class="actions">
+              <button id="playWord">Play Word</button>
+              <button id="shuffleRack">Shuffle Rack</button>
+              <button id="recall">Recall Tiles</button>
+            </div>
+            <p class="note">Full rules enabled: cross-words, adjacency, anchors, and blanks. Drag tiles to place them.</p>
+          </div>
+
+          <div class="log">
+            <h2>Moves</h2>
+            <div id="log"></div>
+          </div>
+        </aside>
+      </main>
+
+      <footer class="rack-area">
+        <h2>Your Rack</h2>
+        <div id="rack" class="rack" aria-label="tile rack"></div>
+      </footer>
+    </div>
+
+    <script src="words.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
